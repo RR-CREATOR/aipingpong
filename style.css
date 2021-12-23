@@ -1,0 +1,23 @@
+.heading{
+    width: 100%;
+    text-align: left;
+}
+
+.heading h3{
+    display: inline;
+}
+
+.heading button{
+    float: right;
+    border: 1px solid white;
+}
+
+#start, #status, #restart{
+    font-size: 17px;
+}
+
+#copy_right_footer{
+    background-color: #f5f5f5;
+    line-height: 2;
+    margin: 0px;
+}
