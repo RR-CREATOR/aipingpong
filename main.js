@@ -30,13 +30,35 @@ function setup(){
   video.hide();
 
   poseNet = ml5.poseNet(video, modelLoaded);
+  poseNet.on('pose', gotPoses);
 }
 
 function modelLoaded(){
   console.log("Model Loaded");
 }
 
+wristScore = 0;
+rightWristX = 0;
+trightWristY = 0;
+
+function gotPoses(results){
+  if(results.length > 0){
+    rightrightWristX = results[0].pose.rightWrist.x;
+    rightWristY = results[0].pose.rightWrist.y;
+    wristScore = results[0].pose.keypoints[10].score;
+    console.log(rightWristX + ", " + rightWristY + ", " + wristScore);
+  }
+}
+
+
 function draw(){
+  if(wristScore > 0.2){
+    fill("red");
+    stroke("red");
+    circle(rightWristX, rightWristY, 20);
+    console.log("Dot made");
+  }
+
   /////////////
 
   image(video, 0, 0, 700, 600);
